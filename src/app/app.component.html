@@ -1,7 +1,25 @@
 <div class="container">
 	<h1>Prueba técnica - Estudio Faser</h1>
 	<h2>Listado de tareas</h2>
+	<!---------------------------------------TABLA DE TAREAS------------------------------->
+	<table>
+		<tr>
+			<th>Tarea</th>
+			<th>Tiempo empleado (minutos)</th>
+		</tr>
+		<tr *ngFor="let tarea of tareas">
+			<td>
+				{{tarea.titulo}}
+			</td>
+			<td>
+				{{tarea.minutos}}
+			</td>
+		</tr>
+	</table>
+
+	<!---- 
 	<ol>
 		<li *ngFor="let tarea of tareas">{{tarea.titulo}} ({{tarea.minutos}} minutos)</li>
 	</ol>
+	-->
 </div>
