@@ -1,21 +1,52 @@
 <div class="container">
 	<h1>Prueba técnica - Estudio Faser</h1>
 	<h2>Listado de tareas</h2>
+	<!---------------------------------------NUEVA TAREA----------------------------------->
+	<div>
+		<form [formGroup]="nuevaTarea" (ngSubmit)="crearTarea()">
+			<p>
+				<label for="titulo">Titulo</label>
+				<input id="titulo" name="titulo" formControlName="titulo" placeholder="titulo" type="text"/>
+				<span  *ngIf="handleError('titulo', 'required')">
+					Es requerido el titulo.
+				</span>
+			</p>
+			<p>
+				<label for="minutos">Tiempo (Minutos)</label>
+				<input id="minutos" name="minutos" formControlName="minutos" type="text"/>
+				<span *ngIf="handleError('minutos', 'required')">
+					Es requerido el tiempo.
+				</span>
+				<span *ngIf="handleError('minutos', 'min')">
+					El tiempo debe ser mayor a cero.
+				</span>
+				<span *ngIf="handleError('minutos', 'pattern')">
+					El tiempo debe ser un número.
+				</span>
+			</p>
+			<p>
+				<input type="submit" value="Agregar"/>
+			</p>
+		</form>
+	</div>	
 	<!---------------------------------------TABLA DE TAREAS------------------------------->
-	<table>
-		<tr>
-			<th>Tarea</th>
-			<th>Tiempo empleado (minutos)</th>
-		</tr>
-		<tr *ngFor="let tarea of tareas">
-			<td>
-				{{tarea.titulo}}
-			</td>
-			<td>
-				{{tarea.minutos}}
-			</td>
-		</tr>
-	</table>
+	<div>
+		<table>
+			<tr>
+				<th>Tarea</th>
+				<th>Tiempo empleado (minutos)</th>
+			</tr>
+			<tr *ngFor="let tarea of tareas">
+				<td>
+					{{tarea.titulo}}
+				</td>
+				<td>
+					{{tarea.minutos}}
+				</td>
+			</tr>
+		</table>
+	</div>
+
 
 	<!---- 
 	<ol>
