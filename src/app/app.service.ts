@@ -40,4 +40,15 @@ export class AppService {
             console.log("Error al agregar la tarea");
         }
     }
+
+    /**
+     * Metodo para eliminar tarea
+     * @param id de tarea
+     */
+    public async eliminarTarea(id:number){
+        var i = this.tareas.findIndex(value=>value.id == id);
+        if (i!== -1) {
+            this.tareas.splice(i,1);
+        }
+    }
 }

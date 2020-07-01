@@ -64,4 +64,19 @@ export class AppComponent {
 	handleError(controlName: string, errorName: string) {
 		return this.nuevaTarea.controls[controlName].hasError(errorName);
 	}
+
+	/**
+	 * Metodo para eliminar tarea
+	 * @param id de tarea
+	 */
+	async eliminarTarea(id:number){
+		await this.service.eliminarTarea(id)
+		.then(res=>{
+			alert("Tarea eliminada con éxito")
+		})
+		.catch(err=>{
+			alert("No se ha podido eliminar la tarea")
+		})
+	}
+
 }
