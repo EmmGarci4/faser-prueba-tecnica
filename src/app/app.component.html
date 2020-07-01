@@ -5,15 +5,15 @@
 	<div>
 		<form [formGroup]="nuevaTarea" (ngSubmit)="crearTarea()">
 			<p>
-				<label for="titulo">Titulo</label>
-				<input id="titulo" name="titulo" formControlName="titulo" placeholder="titulo" type="text"/>
+				<label for="titulo">Tarea</label>
+				<input id="titulo" name="titulo" formControlName="titulo" placeholder="Tarea" type="text"/>
 				<span  *ngIf="handleError('titulo', 'required')">
-					Es requerido el titulo.
+					Es requerido el nombre de la tarea.
 				</span>
 			</p>
 			<p>
 				<label for="minutos">Tiempo (Minutos)</label>
-				<input id="minutos" name="minutos" formControlName="minutos" type="text"/>
+				<input id="minutos" name="minutos" formControlName="minutos" placeholder="0" type="text"/>
 				<span *ngIf="handleError('minutos', 'required')">
 					Es requerido el tiempo.
 				</span>

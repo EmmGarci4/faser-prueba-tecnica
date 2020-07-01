@@ -28,7 +28,7 @@ export class AppComponent {
 	buildForm() {
 		this.nuevaTarea = this.formBuilder.group({
 			titulo: ['',[Validators.required]],
-			minutos:[0,[Validators.required,Validators.min(0),Validators.pattern('[+-]?[0-9]+')]] 
+			minutos:['',[Validators.required,Validators.min(0),Validators.pattern('[+-]?[0-9]+')]] 
 		})
 	}
 
@@ -46,6 +46,7 @@ export class AppComponent {
 			await this.service.crearTarea(values.titulo,Number(values.minutos))
 			.then(res=>{
 				alert("Tarea agregada con éxito");
+				this.nuevaTarea.reset();
 			})
 			.catch(err=>{
 				alert("Ha ocurrido un error al agregar la tarea");
