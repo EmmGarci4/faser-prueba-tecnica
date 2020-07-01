@@ -28,7 +28,7 @@ export class AppComponent {
 	buildForm() {
 		this.nuevaTarea = this.formBuilder.group({
 			titulo: ['',[Validators.required]],
-			minutos:[0,[Validators.required,Validators.min(0),Validators.pattern('[0-9]+')]] 
+			minutos:[0,[Validators.required,Validators.min(0),Validators.pattern('[+-]?[0-9]+')]] 
 		})
 	}
 
@@ -62,7 +62,8 @@ export class AppComponent {
 	 * retorna false si no hay error
 	 */
 	handleError(controlName: string, errorName: string) {
-		return this.nuevaTarea.controls[controlName].hasError(errorName);
+		return this.nuevaTarea.controls[controlName].hasError(errorName) 
+		&& this.nuevaTarea.controls[controlName].touched;
 	}
 
 	/**
