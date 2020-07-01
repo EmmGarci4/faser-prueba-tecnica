@@ -36,7 +36,7 @@ export class AppService {
      */
     public async crearTarea(titulo:string,minutos:number){
         try{
-            this.tareas.push(new Tarea(this.tareas.length,titulo,minutos,false));
+            this.tareas.push(new Tarea(this.tareas.length+1,titulo,minutos,false));
         }catch(error){
             console.log("Error al agregar la tarea");
         }
@@ -75,7 +75,6 @@ export class AppService {
      */
 	marcarTarea(id:number,esDestacada:boolean){
         var tarea = this.tareas.find(element=>element.id === id);
-        console.log(tarea)
         if(tarea!=null){
             tarea.esDestacada = esDestacada;
         }
