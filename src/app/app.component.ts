@@ -93,4 +93,20 @@ export class AppComponent {
 		await this.service.ordenarMenorMayor();
 	}
 
+	/**
+	 * Metodo que marca como destacada una tarea
+	 * @param id de tarea
+	 */
+	async destacarTarea(id:number){
+		await this.service.marcarTarea(id,true);
+	}
+
+	/**
+	 * Metodo que marca como no destacada una tarea
+	 * @param id de tarea
+	 */
+	async noDestacarTarea(id:number){
+		await this.service.marcarTarea(id,false);
+	}
+
 }

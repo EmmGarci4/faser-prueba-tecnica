@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Tarea } from './tarea';
+import { element } from 'protractor';
 
 @Injectable()
 export class AppService { 
@@ -17,11 +18,11 @@ export class AppService {
      */
     llenarTareas(){
         try {
-            this.tareas.push(new Tarea(1, 'Sacar a pasear al perro', 15));
-            this.tareas.push(new Tarea(2, 'Sacar la basura', 5));
-            this.tareas.push(new Tarea(3, 'Cocinar la cena', 30));
-            this.tareas.push(new Tarea(4, 'Lavar la ropa', 50));
-            this.tareas.push(new Tarea(5, 'Regar las plantas', 20));
+            this.tareas.push(new Tarea(1, 'Sacar a pasear al perro', 15,false));
+            this.tareas.push(new Tarea(2, 'Sacar la basura', 5,false));
+            this.tareas.push(new Tarea(3, 'Cocinar la cena', 30,false));
+            this.tareas.push(new Tarea(4, 'Lavar la ropa', 50,false));
+            this.tareas.push(new Tarea(5, 'Regar las plantas', 20,false));
             return this.tareas;
         } catch (error) {
             return null;
@@ -35,7 +36,7 @@ export class AppService {
      */
     public async crearTarea(titulo:string,minutos:number){
         try{
-            this.tareas.push(new Tarea(this.tareas.length,titulo,minutos));
+            this.tareas.push(new Tarea(this.tareas.length,titulo,minutos,false));
         }catch(error){
             console.log("Error al agregar la tarea");
         }
@@ -64,5 +65,20 @@ export class AppService {
 	 */
 	async ordenarMenorMayor(){
         this.tareas.sort((ele1,ele2)=>ele2.minutos - ele1.minutos);
+    }
+    
+
+    /**
+     * Metodo que cambia el estado de la tarea
+     * @param id de tarea
+     * @param esDestacada estado
+     */
+	marcarTarea(id:number,esDestacada:boolean){
+        var tarea = this.tareas.find(element=>element.id === id);
+        console.log(tarea)
+        if(tarea!=null){
+            tarea.esDestacada = esDestacada;
+        }
 	}
+    
 }

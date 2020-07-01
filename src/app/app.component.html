@@ -41,7 +41,7 @@
 				<th>Tarea</th>
 				<th>Tiempo empleado (minutos)</th>
 			</tr>
-			<tr *ngFor="let tarea of tareas">
+			<tr *ngFor="let tarea of tareas" [ngClass]="(tarea.esDestacada)?'tarea-destacada':'tarea-no-destacada'">
 				<td>
 					{{tarea.titulo}}
 				</td>
@@ -49,6 +49,8 @@
 					{{tarea.minutos}}
 				</td>
 				<td><button (click)="eliminarTarea(tarea.id)">Eliminar</button></td>
+				<td *ngIf="!tarea.esDestacada"><button (click)="destacarTarea(tarea.id)">Destacar</button></td>
+				<td *ngIf="tarea.esDestacada"><button (click)="noDestacarTarea(tarea.id)">No Destacar</button></td>
 			</tr>
 		</table>
 	</div>
