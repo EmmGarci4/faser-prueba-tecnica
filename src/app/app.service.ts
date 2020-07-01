@@ -51,4 +51,18 @@ export class AppService {
             this.tareas.splice(i,1);
         }
     }
+
+    /**
+	 * Metodo para ordenar por minutos de mayor a menor
+	 */
+	async ordenarMayorMenor(){
+		this.tareas.sort((ele1,ele2)=>ele1.minutos - ele2.minutos);
+	}
+
+	/**
+	 * Metodo para ordenar por minutos de menor a mayor
+	 */
+	async ordenarMenorMayor(){
+        this.tareas.sort((ele1,ele2)=>ele2.minutos - ele1.minutos);
+	}
 }

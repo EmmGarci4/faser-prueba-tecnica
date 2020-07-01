@@ -79,4 +79,18 @@ export class AppComponent {
 		})
 	}
 
+	/**
+	 * Metodo para ordenar por minutos de mayor a menor
+	 */
+	async ordenarMayorMenor(){
+		await this.service.ordenarMayorMenor();
+	}
+
+	/**
+	 * Metodo para ordenar por minutos de menor a mayor
+	 */
+	async ordenarMenorMayor(){
+		await this.service.ordenarMenorMayor();
+	}
+
 }
